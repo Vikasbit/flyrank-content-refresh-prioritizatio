@@ -77,3 +77,4 @@ practice — and it's on the capstone's required-section list, so a paper withou
 > "predicted Google's algorithm" · no client-identifying details · numbers in this report
 > match a fresh re-run.
 
+

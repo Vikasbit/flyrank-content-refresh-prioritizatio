@@ -43,3 +43,4 @@ no new accounts, done in ten minutes.
 - `submission/paper_url.txt` contains exactly that URL, one line, starts with `https://`.
 - Push a small edit and confirm it appears at the URL within minutes — now you trust the loop.
 
+

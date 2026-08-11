@@ -159,7 +159,7 @@ Template copies share no history with the shared repo, so fixes don't arrive on 
 Pull them in when you want them:
 
 ```bash
-git remote add upstream https://github.com/flyrank-bih/flyrank-content-refresh-prioritization-starter
+git remote add upstream https://github.com/flyrank-bih/flyrank-content-refresh-prioritizatio-starter
 git fetch upstream
 git merge upstream/main --allow-unrelated-histories
 ```
@@ -167,4 +167,5 @@ git merge upstream/main --allow-unrelated-histories
 Badge lines will conflict (they were rewritten to point at YOUR copy) — resolve those by
 keeping yours. Everything that matters for correctness is also announced on your portal
 board, so syncing is optional, not required.
+
 

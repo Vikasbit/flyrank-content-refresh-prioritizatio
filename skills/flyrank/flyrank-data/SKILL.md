@@ -65,3 +65,4 @@ sealed test month. Run the full 79M scan ONCE when the query is final and cache 
 - If a number looks absurd (a 400% rate, a giant ratio from 12 rows), re-read the gotchas
   before celebrating.
 
+

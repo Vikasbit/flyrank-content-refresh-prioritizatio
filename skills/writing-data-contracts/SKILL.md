@@ -48,3 +48,4 @@ A contract line without a query next to it is a guess. For each claim, write the
 - Someone who has never seen the data could read your contract and predict the row count within
   a few percent. If they couldn't, the contract is still too vague.
 
+

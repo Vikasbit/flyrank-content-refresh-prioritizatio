@@ -160,3 +160,4 @@ Hugging Face (gated; notebook 03 walks through access and the DuckDB workflow).
    per-content context columns repeat on every row of that content item — `ANY_VALUE()` them,
    never `SUM()`.
 
+

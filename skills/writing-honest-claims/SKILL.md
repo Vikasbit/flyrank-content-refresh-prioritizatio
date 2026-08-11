@@ -49,3 +49,4 @@ as "how to make it stronger", not "gotcha" — the goal is the next level of rig
 - Have your assistant play skeptic: "attack these claims — which words exceed the evidence?"
   Fix what survives the attack honestly.
 
+

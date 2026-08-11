@@ -727,3 +727,4 @@ Before you call it done, check that your work answers every one of these:
 
 You are not building magic SEO automation. You are using safe real-world search and content data to learn which signals help prioritize content decisions, then checking honestly whether that prioritization beats a transparent rule — and saying clearly where human review is still required.
 
+
