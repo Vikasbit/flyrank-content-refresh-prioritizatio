@@ -16,6 +16,15 @@ no private client data, no setup headaches.
 
 ---
 
+## Project Summary
+
+- **Research Question:** Which webpages should be prioritized for content refresh based on historical search performance and content signals? Content teams have many webpages competing for limited review time. This project explores how historical search-performance signals and content signals can help prioritize pages that may warrant content-refresh review.
+- **Methodology:** Built 52 leakage-free pre-decision features from 30,000 anonymized search items across 32 clients. Compared hand-written baseline rules against Logistic Regression, Decision Tree, and Random Forest models under strict `client_holdout` validation splits.
+- **Final Output:** Public interactive research paper deployed at [https://vikasbit.github.io/flyrank-content-refresh-prioritizatio/](https://vikasbit.github.io/flyrank-content-refresh-prioritizatio/), along with a prioritized reviewer queue (`outputs/refresh_queue.csv`) mapping items to actionable reviewer codes (`refresh_and_review_ctr`, `refresh_and_review_engagement`, `refresh`, `monitor`).
+- **Limitations:** Provides directional decision-support for human reviewers. Does not prove causality, guarantee ranking or traffic improvements, or perform automated publishing/rewriting.
+
+---
+
 ## Quickstart — first win in 2 minutes
 
 The fastest path is Google Colab (one click, zero install). Open Notebook 1 and run all cells:

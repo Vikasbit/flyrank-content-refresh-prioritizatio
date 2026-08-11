@@ -610,6 +610,7 @@
           <div class="abstract-title">Executive Abstract</div>
           <p class="abstract-text">
             Which webpages should be prioritized for content refresh based on historical search performance and content signals? 
+            Content teams have many webpages competing for limited review time. This project explores how historical search-performance signals and content signals can help prioritize pages that may warrant content-refresh review. 
             Using an anonymized dataset of 30,000 content items across 32 pseudonymized clients, we evaluated pre-decision search metrics and structural content signals to identify pages experiencing traffic and impression decline. 
             A transparent heuristic rule baseline achieved a Precision@50 of 0.240 on a client-holdout validation split, whereas a Random Forest classifier achieved a Precision@50 of 0.680 (0.740 in single-split evaluation) and an ROC AUC of 0.747. 
             In time-aware and client-grouped validation splits, the model consistently demonstrated superior ranking efficiency, identifying declining high-opportunity pages with over 2.8× precision compared to hand-written rules. 
@@ -645,7 +646,10 @@
       <section id="introduction">
         <h2>2. Introduction & Problem Statement</h2>
         <p>
-          In modern search engine optimization (SEO) and content engineering, existing organic content decays over time due to shifting search intent, algorithm updates, and competitive pressure. Content teams face a continuous capital allocation decision: <em>Should engineering and editorial resources be spent creating new articles or refreshing existing decaying content?</em>
+          In modern search engine optimization (SEO) and content engineering, existing organic content decays over time due to shifting search intent, algorithm updates, and competitive pressure. Content teams have many webpages competing for limited review time. This project explores how historical search-performance signals and content signals can help prioritize pages that may warrant content-refresh review.
+        </p>
+        <p>
+          Content teams face a continuous capital allocation decision: <em>Should engineering and editorial resources be spent creating new articles or refreshing existing decaying content?</em>
         </p>
         <p>
           Manually auditing thousands of published URLs is inefficient and prone to subjective bias. Simple heuristic rules (e.g. "refresh everything older than 6 months") frequently flag high-ranking stable articles while missing visible pages suffering rapid impression drop-off.

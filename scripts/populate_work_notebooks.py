@@ -153,7 +153,7 @@ print("Leakage Audit PASSED: Zero leaky target signals in feature matrix.")
 # 4. w07_action_playbook.ipynb
 w07_cells = [
     make_cell("markdown", "# ML-10 — Content Action Playbook\n\nMapping model probability scores and heuristic reason codes into action recommendations for editorial teams."),
-    make_cell("markdown", "## 1. Ranked actions + reason codes\n\n- `CTR_OPPORTUNITY` → `REFRESH_CONTENT` (or `refresh_and_review_ctr`)\n- `HIGH_DEMAND` → `REVIEW_HIGH_DEMAND`\n- `RANKING_OPPORTUNITY` → `REVIEW_RANKING`\n- `LOWER_PRIORITY` → `MONITOR`"),
+    make_cell("markdown", "## 1. Ranked actions + reason codes\n\n- `CTR_OPPORTUNITY` → `REFRESH_CONTENT` (or `refresh_and_review_ctr`)\n- `HIGH_DEMAND` → `REVIEW_HIGH_DEMAND` (or `refresh_and_review_engagement`)\n- `RANKING_OPPORTUNITY` → `REVIEW_RANKING` (or `refresh`)\n- `LOWER_PRIORITY` → `MONITOR` (or `monitor`)"),
     make_cell("code", """import pandas as pd
 
 queue = pd.read_csv("outputs/refresh_queue.csv")
@@ -175,7 +175,7 @@ print(queue[["final_rank", "final_refresh_score", "suggested_action", "confidenc
 # 5. capstone.ipynb
 capstone_cells = [
     make_cell("markdown", "# Content Refresh Prioritization — Capstone Research Notebook\n\n[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Vikasbit/flyrank-content-refresh-prioritizatio/blob/main/work/notebooks/capstone.ipynb?flush_cache=true)\n\nThis capstone notebook summarizes the research question, data, methodology, results, limitations, and action playbook for Content Refresh Prioritization."),
-    make_cell("markdown", "## 1. Question\n\n**Research Question:** Which webpages should be prioritized for content refresh based on historical search performance and content signals?\n\n**Decision Supported:** Allocating editorial refresh resources to high-impact decaying pages vs publishing net-new content."),
+    make_cell("markdown", "## 1. Question\n\n**Research Question:** Which webpages should be prioritized for content refresh based on historical search performance and content signals?\n\n**Decision Supported:** Content teams have many webpages competing for limited review time. This project explores how historical search-performance signals and content signals can help prioritize pages that may warrant content-refresh review."),
     make_cell("code", """import json
 import pandas as pd
 
@@ -205,13 +205,57 @@ print(f"Random Forest Precision@50: {models['random_forest']['precision_at_50']:
 print(f"Random Forest ROC AUC: {models['random_forest']['roc_auc']:.3f}")
 """),
     make_cell("markdown", "## 5. Limitations\n\n- Observational data only; no causal guarantees.\n- Seasonal traffic variations not fully modeled in 90-day window.\n- **Mandatory Statement:** *This analysis provides directional decision-support and does not establish that refreshing a page will cause improved traffic, rankings, or conversions.*"),
-    make_cell("markdown", "## 6. Ranked recommendations\n\n- `CTR_OPPORTUNITY` → `REFRESH_CONTENT`\n- `HIGH_DEMAND` → `REVIEW_HIGH_DEMAND`\n- `RANKING_OPPORTUNITY` → `REVIEW_RANKING`\n- `LOWER_PRIORITY` → `MONITOR`"),
+    make_cell("markdown", "## 6. Ranked recommendations\n\n- `CTR_OPPORTUNITY` → `REFRESH_CONTENT` (or `refresh_and_review_ctr`)\n- `HIGH_DEMAND` → `REVIEW_HIGH_DEMAND` (or `refresh_and_review_engagement`)\n- `RANKING_OPPORTUNITY` → `REVIEW_RANKING` (or `refresh`)\n- `LOWER_PRIORITY` → `MONITOR` (or `monitor`)"),
     make_cell("code", """queue = pd.read_csv("outputs/refresh_queue.csv")
 print("Suggested Actions Summary:")
 print(queue["suggested_action"].value_counts())
 """),
     make_cell("markdown", "## 7. Artifacts the paper embeds\n\n- `outputs/charts/action_mix.svg`\n- `outputs/charts/confidence_mix.svg`\n- `outputs/charts/top_reason_codes.svg`\n- `outputs/charts/top_feature_importance.svg`\n- `outputs/charts/trend_distribution.svg`"),
-    make_cell("markdown", "## ML-12 Summary & Presentation\n\n### 5-Minute Demo Outline\n1. **Problem:** Content decay hurts organic traffic; manually auditing 30,000 pages is impossible.\n2. **Data & Leakage Audit:** Built 52 leakage-free pre-decision features from GSC/GA4 signals.\n3. **Baseline vs Model:** Baseline rules achieved 0.240 Precision@50; Random Forest improved this to 0.680.\n4. **Action Playbook:** Automated queue flags CTR and ranking opportunities for human review.\n5. **Honest Framing:** Decision-support tool for editorial review, not automated publishing.\n\n### Social-Post Cut\n🚀 Excited to share my FlyRank ML Internship capstone on Content Refresh Prioritization!\nUsing 30k anonymized search performance rows across 32 clients, our Random Forest model achieved a 0.747 ROC AUC and 0.680 Precision@50 (vs 0.240 baseline rules) to flag decaying content for editorial refresh.\nCheck out the live paper: https://vikasbit.github.io/flyrank-content-refresh-prioritizatio/\nBuilt on data from FlyRank (https://flyrank.ai)\n\n### 3-Sentence Employer Summary\n- Built an end-to-end Machine Learning pipeline ranking 30,000 pages for content refresh using client-holdout validation to ensure generalization across unseen domains.\n- Achieved a 0.747 ROC AUC and a 2.8× precision improvement over heuristic rules (0.680 vs 0.240 Precision@50) without target leakage.\n- Deployed a public, transparent research paper detailing methodological rigor, model governance, and honest decision-support limitations.")
+    make_cell("markdown", """# 5-Minute Demo Outline
+
+## 1. Question — 45 seconds
+Which webpages should be prioritized for content refresh based on historical search performance and content signals? Content teams have many webpages competing for limited review time. This project explores how historical search-performance signals and content signals can help prioritize pages that may warrant content-refresh review.
+
+## 2. Method — 1 minute
+- **Week-4 Baseline:** Hand-written rule flagging stale pages (updated >= 180 days ago) with high visibility (>= 500 impressions).
+- **Week-5 Model:** Random Forest Classifier trained on 52 pre-decision features (GSC search visibility, GA4 engagement metrics, and article metadata).
+- **Week-6 Honest Validation:** `client_holdout` split strategy where 20% of client domains (2,325 rows) are completely held out to evaluate true out-of-sample generalization.
+- **Leakage Checks:** Target-derived trend signals (`trend_pct` and `trend_direction`) strictly omitted from feature matrices.
+
+## 3. One Chart — 1 minute
+![Top Feature Importance](outputs/charts/top_feature_importance.svg)
+*Chart Explanation:* The feature importance breakdown reveals that `days_with_impressions` (16.06%) and `log_impressions_90d` (12.85%) dominate prediction over raw word count (4.12%). Regularity of search exposure is a stronger signal of stability than article length.
+
+## 4. Honest Result — 1 minute
+Under `client_holdout` validation split:
+- **Baseline Rules:** Precision@50 = 0.240 | ROC AUC = 0.627
+- **Random Forest Model:** Precision@50 = 0.680 | ROC AUC = 0.747 | Avg Precision = 0.610
+*Honest Explanation:* The Random Forest model achieved a 2.8x precision improvement over baseline rules at Precision@50 (0.680 vs 0.240). These observed results provide a directional decision-support tool for editorial review, but do not establish that refreshing a page will cause improved traffic or rankings.
+
+## 5. Recommendation — 1 minute
+The action playbook maps probability scores and reason codes to reviewer categories:
+- `CTR_OPPORTUNITY` → `REFRESH_CONTENT` (or `refresh_and_review_ctr`): High visibility pages in top positions with low CTR.
+- `HIGH_DEMAND` → `REVIEW_HIGH_DEMAND` (or `refresh_and_review_engagement`): High traffic pages with low engagement/scroll rates.
+- `RANKING_OPPORTUNITY` → `REVIEW_RANKING` (or `refresh`): Stale pages with strong baseline demand experiencing drop-off.
+- `LOWER_PRIORITY` → `MONITOR` (or `monitor`): Stable or low-demand pages.
+*Human Governance:* All recommendations are strictly decision-support reviewer aids; human editors must inspect and approve pages before taking action. Systems MUST NOT automatically publish, rewrite, delete, or redirect content.
+
+# Shareable Cuts
+
+## Social Post
+🚀 Excited to share my FlyRank ML Internship capstone on Content Refresh Prioritization!
+
+Content teams have many webpages competing for limited review time. To solve this capital allocation challenge, I built an ML decision-support pipeline that scores and ranks decaying pages for editorial refresh review.
+
+Using 30,000 anonymized search performance rows across 32 clients, we evaluated 52 pre-decision signals (GSC search visibility, GA4 engagement metrics, and content metadata). Under strict client-holdout validation, our Random Forest classifier achieved a 0.747 ROC AUC and 0.680 Precision@50 — a 2.8x improvement over hand-written baseline rules (0.240 Precision@50).
+
+The pipeline outputs a transparent reviewer queue mapping pages to actionable categories (CTR review, engagement review, refresh, monitor) while maintaining strict human-in-the-loop governance.
+
+Check out the live research paper: https://vikasbit.github.io/flyrank-content-refresh-prioritizatio/
+Built on the FlyRank ML Internship dataset (https://flyrank.ai).
+
+## Employer-Facing Summary
+I built a machine learning content refresh prioritization pipeline and research paper to address content decay and editorial audit inefficiency across client websites. Using 30,000 anonymized search performance rows from Google Search Console and GA4, I compared hand-written heuristic rules against Logistic Regression, Decision Tree, and Random Forest models under client-holdout validation. The analysis showed a 2.8x precision lift over baseline rules (0.680 vs 0.240 Precision@50, 0.747 ROC AUC), which I turned into a transparent reviewer queue and public research paper.""")
 ]
 
 save_notebook(NOTEBOOKS_DIR / "w04_baseline_score.ipynb", w04_cells)
@@ -220,5 +264,3 @@ save_notebook(NOTEBOOKS_DIR / "w06_validation_audit.ipynb", w06_cells)
 save_notebook(NOTEBOOKS_DIR / "w07_action_playbook.ipynb", w07_cells)
 save_notebook(NOTEBOOKS_DIR / "capstone.ipynb", capstone_cells)
 print("All notebooks populated successfully!")
-
-
