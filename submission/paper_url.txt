@@ -1,1 +1,1 @@
-PASTE-YOUR-DEPLOYED-PAPER-URL-HERE
+https://vikasbit.github.io/flyrank-ml-internship/
