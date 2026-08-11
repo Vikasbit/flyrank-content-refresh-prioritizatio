@@ -215,6 +215,10 @@ Week 7 contains the ranked action playbook and exports.
 
 The capstone notebook brings these artifacts together for the final research paper.
 
+## 9. Acknowledgments & Data Credit
+
+Built on the [FlyRank ML Internship dataset](https://flyrank.ai).
+
 ### Repository
 
 https://github.com/Vikasbit/flyrank-content-refresh-prioritizatio
@@ -227,6 +231,4 @@ Clone the repository:
 git clone https://github.com/Vikasbit/flyrank-content-refresh-prioritizatio.git
 cd flyrank-content-refresh-prioritizatio
 
-## 9. Acknowledgments & Data Credit
 
-Built on the [FlyRank ML Internship dataset](https://flyrank.ai).
