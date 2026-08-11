@@ -9,3 +9,4 @@ Ground rules for this repo:
 - One task per conversation; finish and verify before starting the next.
 - Never commit datasets (CI blocks them). Never print private data, client names, or raw queries.
 - The intern validates your output — end each task by running the notebook top to bottom.
+

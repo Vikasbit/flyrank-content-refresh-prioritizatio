@@ -53,3 +53,4 @@ finding from headings + chart captions alone. Mobile-check it — half your read
   finding and its limits correctly? Ask your assistant to role-play exactly that reader.
 - Every claim on the page passes the claim ladder (see writing-honest-claims skill).
 - All 9 sections present; the data credit links; the notebooks link resolves.
+

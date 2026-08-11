@@ -726,3 +726,4 @@ Before you call it done, check that your work answers every one of these:
 ## 16. One-Sentence Mental Model
 
 You are not building magic SEO automation. You are using safe real-world search and content data to learn which signals help prioritize content decisions, then checking honestly whether that prioritization beats a transparent rule — and saying clearly where human review is still required.
+

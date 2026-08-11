@@ -48,3 +48,4 @@ as "how to make it stronger", not "gotcha" — the goal is the next level of rig
 - Read each conclusion sentence alone, out of context: does it say more than its table shows?
 - Have your assistant play skeptic: "attack these claims — which words exceed the evidence?"
   Fix what survives the attack honestly.
+

@@ -93,3 +93,4 @@ These are optional. The internship should still be doable without student verifi
 - The approved internship dataset release.
 
 That is enough to complete the internship.
+

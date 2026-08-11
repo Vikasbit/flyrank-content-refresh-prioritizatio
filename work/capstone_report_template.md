@@ -76,3 +76,4 @@ practice — and it's on the capstone's required-section list, so a paper withou
 > language everywhere · no causal claims without an experiment or causal design · no
 > "predicted Google's algorithm" · no client-identifying details · numbers in this report
 > match a fresh re-run.
+

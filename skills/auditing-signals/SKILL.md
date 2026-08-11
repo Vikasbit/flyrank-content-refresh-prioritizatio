@@ -48,3 +48,4 @@ instead, that's a finding too.
 - Rerun one test on a different slice (another period, another group). A real signal survives;
   noise doesn't.
 - Read your verdicts as a skeptic: does any CONFIRMED rest on a bucket smaller than the floor?
+

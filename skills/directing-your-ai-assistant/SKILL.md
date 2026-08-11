@@ -50,3 +50,4 @@ Paste real errors whole — don't summarize them. The assistant fixes what it ca
 - Every finished section ran top to bottom before you committed it.
 - You can explain, in your own words, everything you committed. If you can't — that's the signal
   to slow down: core idea first, AI second.
+

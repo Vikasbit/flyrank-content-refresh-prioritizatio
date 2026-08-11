@@ -59,3 +59,4 @@ Your final repo is public. Before you push:
 
 CI fails any commit that includes a dataset or leaks client-identifying
 patterns — this rule doubles as the public-safety discipline the internship teaches.
+

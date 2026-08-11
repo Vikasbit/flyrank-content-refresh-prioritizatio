@@ -52,3 +52,4 @@ the action, the reason code, a confidence note, and what would make it wrong.
 - The rule fits in three sentences a non-engineer understands.
 - precision@K is computed on the SAME data slice and labels the model will use later.
 - The top-20 hand review found at least one weak pick — if it found none, look harder.
+

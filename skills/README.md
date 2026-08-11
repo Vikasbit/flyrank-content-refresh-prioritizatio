@@ -31,3 +31,4 @@ copy its whole content, and paste it into your chat before asking for help. That
 
 Every skill outside `flyrank/` is **general** — take this whole folder to any future project.
 Delete `skills/flyrank/` and the flyrank column above, and everything else still works.
+

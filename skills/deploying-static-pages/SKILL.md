@@ -42,3 +42,4 @@ no new accounts, done in ten minutes.
 - The URL loads in incognito on desktop AND phone; every image renders; every link works.
 - `submission/paper_url.txt` contains exactly that URL, one line, starts with `https://`.
 - Push a small edit and confirm it appears at the URL within minutes — now you trust the loop.
+
